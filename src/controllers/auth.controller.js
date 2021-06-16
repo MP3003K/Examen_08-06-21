@@ -10,6 +10,7 @@ export const login = async (req, res)=>{
        const {username, password} = req.body;
        //console.log(pass);
        const response = await pool.query('SELECT * FROM usuario where username = $1', [username]);      
+       console.log(response);
        if(response.rows.length!=0){           
            const passold = response.rows[0].password;
            if(await bcrypt.compare(password, passold)){
@@ -26,16 +27,16 @@ export const login = async (req, res)=>{
                 });
            }else{
                 return res.status(403).json({
-                    message: 'Username o Password incorrectos...!'
+                    message: 'Username o Password incorrectos...1!'
                 });
            }           
        }
        return res.status(403).json({
-           message: 'Username o Password incorrectos...!'
+           message: 'Username o Password incorrectos...2!'
        });
     } catch (e) {
         console.log(e);
-        return res.status(500).json({message: 'Error al validar usuario...!'});
+        return res.status(500).json({message: 'Error al validar usuario...!3'});
     }    
 };
 
@@ -58,7 +59,7 @@ export const token = async (req, res)=>{
         
     }
 };
-
+    //a
 export const signIn = async ( req, res ) => {
     try {
         const { username, password } = req.body;
@@ -92,12 +93,12 @@ export const signIn = async ( req, res ) => {
                 });
             } else {
                 return res.status(403).json({
-                    message: 'Username o Password incorrectos...!'
+                    message: 'Username o Password incorrectos...4!'
                 });
             }           
         }
         return res.status(403).json({
-            message: 'Username o Password incorrectos...!'
+            message: 'Username o Password incorrectos...5!'
         });
     } catch (error) {
         

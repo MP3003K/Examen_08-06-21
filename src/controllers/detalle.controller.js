@@ -46,8 +46,10 @@ export const updateDetalle = async(req, res)=>{
 }
 export const createDetalle= async(req, res)=>{
     try {
-        const{precio, cantidad, idproducto,idventa} = req.body;
-        await pool.query('insert into detalle (precio, cantidad, idproducto,idventa) values($1,$2,$3,$4)', [precio, cantidad, idproducto,idventa]);
+       const{precio, cantidad, idproducto,idventa} = req.body;
+       console.log(req.body);
+       
+       await pool.query('insert into detalle (precio, cantidad, idproducto,idventa) values($1,$2,$3,$4)', [precio, cantidad, idproducto,idventa]);
         return res.status(200).json(
             `Producto ${ idventa } creado correctamente...!`);
     } catch (e) {
